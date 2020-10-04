@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+    <meta charset="UTF-8">
+    <title>Weather Dashboard</title>
+         <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--Bootstrap Javascript-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <!--Custom CSS and Javascript-->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="config.js"></script>
+
+    </head>
+    
+    <body>
+        
+        <main class="container-xl pt-3 outterContainer">
+
+            <div class="row">
+                <div class="col-12">Weather Dashboard</div>
+            </div>   
+            <div class="row secondRow">
+                <div class="col-md-4 col-sm-4" id="leftMenu">Search for a city:<br>
+                    <div class="input-group md-form form-sm form-2 pl-0 ">
+                        <input type="text" id="city-input" class="form-control my-0 py-1 amber-border" placeholder="Search">
+                        <button type="submit" id="city-submit"><i class="fa fa-search"></i></button>
+                    </div>
+                            <div class="switch">
+                                <button type="button" id="metric" class="btn btn-info">Metric</button>
+                                <button type="button" id="imperial" class="btn btn-info">Imperial</button>
+                                <div id="displayUnitSelection"></div>
+                                <button id = "find-me">Show my location</button>
+                                <p id = "status"></p>
+                                <p id = "userLocation"></p>
+                                <a id = "map-link" target="_blank"></a>
+                            </div>
+                            
+
+
+                            <h6>Cities: </h6>
+                            
+                            <div id="city-buttons"></div><!--city button-->
+                    </div>
+                
+
+                <div class="col-md-8 col-sm-8" id="rightContent">
+                    <!--content field-->
+                    <div class = "container">
+                        <div class="jumbotron" id="upperJum">
+                            <div id="city-content"></div> <!--city content-->
+                        </div>
+                    </div>
+                    <div class = "container forecastCon">
+                        <div class="jumbotron" id="bottomJum">
+                            <div id="forecast-content"></div> <!--city content-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+            
+        
+        <!--JQuery Library-->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    </body>
+</html>
