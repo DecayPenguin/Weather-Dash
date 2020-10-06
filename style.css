@@ -62,7 +62,7 @@
 }
 
 /*search button css*/
-#city-submit {
+#citySubmit {
     float: left;
     width: 2.5rem;
     padding: 10px;
@@ -74,11 +74,11 @@
     cursor: pointer;
   }
 
-#city-submit:hover{
+#citySubmit:hover{
     background: #0b7dda;
 }
 
-#city-buttons{
+#cityButtons{
     
     padding-left: 1rem;
 }
@@ -87,6 +87,7 @@
 /*lower box*/
 .forecastCon{
     overflow: hidden;
+    height: 200px;
 }
 
 .forecastContent{
@@ -128,10 +129,15 @@
     margin-left: 10px;
 }
 
-#map-link{
+#mapLink{
     font-size: 10px;
 }
 
 #userLocation{
     margin-bottom: 1px;
 }
+
+
+
+
+

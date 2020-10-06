@@ -1,8 +1,9 @@
+
 $(document).ready(function(){
     var apikey = "7fff9c3c870a804f5643f8216e943977";
     //var apikey = config.api_key;
     var currentDate = moment().format("MMMM DD, gggg");
-    var cityArry = ["Atlanta", "Denver", "Seattle", "San Francisco", "Orlando", "New York", "Chicago", "Austin"];
+    var cityArray = ["Atlanta","Denver","Seattle","San Francisco","Orlando","New York", "Chicago", "Austin"];
     var passingUnit = "metric";
     
     $("#imperial").on("click", function(){
@@ -21,7 +22,13 @@ $(document).ready(function(){
         var city = passingData;
         var unit = passingUnit;
 
-            if(passingUnit === "imperial"){
+
+        //switching C and F
+        if(passingUnit === "metric"){
+            var displayUnit = (" C");
+            var displaySpeedUnit = (" KPH");
+            }
+        else if(passingUnit === "imperial"){
             var displayUnit = (" F");
             var displaySpeedUnit = (" MPH");
             }
@@ -108,7 +115,7 @@ $(document).ready(function(){
                     cityDiv.append(displayUV);
                     cityDiv.append(uvNum);
             
-                    $("#city-content").append(cityDiv);
+                    $("#cityContent").append(cityDiv);
                 });
         });
 
@@ -156,7 +163,7 @@ $(document).ready(function(){
                     forecastDiv.append(displayForecastHumid);
 
                     //append data to html
-                    $("#forecast-content").append(forecastDiv);
+                    $("#forecastContent").append(forecastDiv);
                 }
 
                 
@@ -167,11 +174,11 @@ $(document).ready(function(){
    
 
     function generateButton(){
-        $("#city-buttons").empty();
+        $("#cityButtons").empty();
         
-        //console.log(cityArry, cityArry.length);
+        //console.log(cityArray, cityArray.length);
         // Loops through the array of movies
-        for (var i = 0; i < cityArry.length; i++) {
+        for (var i = 0; i < cityArray.length; i++) {
         var buttonDiv = $("<div>");
         var cityButton = $("<button>");
         cityButton.addClass("city");
@@ -179,28 +186,28 @@ $(document).ready(function(){
         cityButton.css("background-color","#008CBA");
         cityButton.css("color","white");
         cityButton.css("border-radius", "4px");
-        cityButton.attr("city-name", cityArry[i]);
-        cityButton.text(cityArry[i]);
+        cityButton.attr("city-name", cityArray[i]);
+        cityButton.text(cityArray[i]);
         buttonDiv.append(cityButton);
-        $("#city-buttons").prepend(buttonDiv);
+        $("#cityButtons").prepend(buttonDiv);
         }
     }
     //clear search field value
     function clear() {
         console.log("clearing")
-        $("#city-content").empty();
-        $("#forecast-content").empty();
+        $("#cityContent").empty();
+        $("#forecastContent").empty();
       }
 
     //on click the search button and input box
-    $("#city-submit").on("click", function(event) {
+    $("#citySubmit").on("click", function(event) {
         event.preventDefault();
         clear();
         //console.log("search button clicked");
-        var inputData = $("#city-input").val().trim();
+        var inputData = $("#cityInput").val().trim();
         var passingData = inputData.charAt(0).toUpperCase()+inputData.slice(1);
         console.log(typeof passingData);
-        if (cityArry.includes(passingData)){
+        if (cityArray.includes(passingData)){
             console.log("dllm");
             var n = true;
         }
@@ -209,9 +216,9 @@ $(document).ready(function(){
         }
 
         if(passingData !== "" && n === true ){
-            cityArry.push(passingData);
+            cityArray.push(passingData);
             console.log("passingData is "+passingData);
-            console.log(cityArry);
+            console.log(cityArray);
 
             //passing city name from inputbox to displayCity function
             displayCity(passingData);
@@ -220,9 +227,9 @@ $(document).ready(function(){
             
         }
         else if(passingData !== "" && n === false ){
-                cityArry.push(passingData);
+                cityArray.push(passingData);
                 console.log("passingData is "+passingData);
-                console.log(cityArry);
+                console.log(cityArray);
                 generateButton();
                 //passing city name from inputbox to displayCity function
                 displayCity(passingData);
@@ -280,14 +287,14 @@ $(document).ready(function(){
    //clear currentlocation field
    function clearLocation(){
         $("#userLocation").empty();
-        $("#map-link").empty();
+        $("#mapLink").empty();
    }
 
    function geoFindMe() {
     clear();
     clearLocation();
     const status = document.querySelector('#status');
-    const mapLink = document.querySelector('#map-link');
+    const mapLink = document.querySelector('#mapLink');
     const geoApikey = "3ac2c177ea774e4abafc67c38fc6aaca";
   
     mapLink.href = '';
