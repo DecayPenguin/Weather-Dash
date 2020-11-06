@@ -23,8 +23,10 @@ function findCity(city) {
                     <img src="${iconURL}" alt="${altIcon}"></h1>
                     <p>Temperature: ${city.main.temp}</p>
                     <p>Humidity: ${city.main.humidity} F</p>            
-                    <p>Wind Speed: ${city.wind.speed} MPH</p>
-                `);
+                    <p>Wind Speed: ${city.wind.speed} MPH</p>`
+                );
+
+                
             var uVI = cityFore.daily[0].uvi
             if (uVI < 2) {
                 var uvScale = $("<span class='badge uv-Low'>");
@@ -45,6 +47,7 @@ function findCity(city) {
             $("#mainDisplay").append(element);
             $("#mainDisplay").append($("<p id='uvDisplay'>").text("UV Index: "));
             $("#uvDisplay").append(uvScale.text(uVI));
+
 
             forecastDisplay.empty();
             var curDay = moment().format("YYYY-MM-DD") + " 12:00:00";
@@ -73,10 +76,14 @@ function findCity(city) {
     });
 }
 
+
+
 function cityButton(userCity) {
     var cityBtn = `<button class="btn-block btn btn-primary">${userCity}</button>`;
     cityList.prepend(cityBtn);
 }
+
+
 
 $(document).on("click", "button", function () {
 
