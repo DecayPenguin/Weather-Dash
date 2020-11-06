@@ -1,70 +1,77 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <title>Weather Dashboard</title>
-         <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!--Bootstrap Javascript-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-     <!--Custom CSS and Javascript-->
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./Pages/style.css">
+    <title>Weather Report</title>
+</head>
 
-    </head>
-    
-    <body>
-        <!-- testing -->
-        <main class="container-xl pt-3 outterContainer">
-
-            <div class="row">
-                <div class="col-12">Weather Dashboard</div>
-            </div>   
-            <div class="row secondRow">
-                <div class="col-md-4 col-sm-4" id="leftMenu">Search for a city:<br>
-                    <div class="input-group md-form form-sm form-2 pl-0 ">
-                        <input type="text" id="cityInput" class="form-control my-0 py-1 amber-border" placeholder="Search">
-                        <button type="submit" id="citySubmit"><i class="fa fa-search"></i></button>
+<body>
+    <!-- Header just says Weather Dashboard -->
+    <header class="text-center p-2">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left side bar -->
+            <!-- Search for a city w/ button and icon -->
+            <!-- Below search results appear, made as buttons -->
+            <div class="col-lg-3 p-1">
+                <label for="CitySearch">Search for a City:</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="City Name" aria-label="CitySearch"
+                        aria-describedby="button-addon2" id="searchInput">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="searchButton"><svg width="1em" height="1em"
+                                viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                <path fill-rule="evenodd"
+                                    d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                            </svg></button>
                     </div>
-                            <div class="switch">
-                                <button type="button" id="metric" class="btn btn-info">Metric</button>
-                                
-                                <div id="displayUnitSelection"></div>
-                                <button id = "find-me">Show my location</button>
-                                <p id = "status"></p>
-                                <p id = "userLocation"></p>
-                                <a id = "mapLink" target="_blank"></a>
-                            </div>
-                            
-
-
-                            <h6>Cities: </h6>
-                            
-                            <div id="cityButtons"></div><!--city button-->
-                    </div>
-                
-
-                <div class="col-md-8 col-sm-8" id="rightContent">
-                    <!--content field-->
-                    <div class = "container">
-                        <div class="jumbotron" id="upperJum">
-                            <div id="cityContent"></div> <!--city content-->
-                        </div>
-                    </div>
-                    <div class = "container forecastCon">
-                        <div class="jumbotron" id="bottomJum">
-                            <div id="forecastContent"></div> <!--city content-->
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col" id="cityList">
                     </div>
                 </div>
             </div>
-        </main>
+            <div class="col-lg-9">
+                <div class="jumbotron jumbotron-fluid m-2">
+                    <div class="container" id="mainDisplay">
+                        <h1 class="display-4" id="cityAndDay">City Result</h1>
+                        <p id="tempF">Temp-F</p>
+                        <p id="humid">Humidity-%</p>
+                        <p id="wind">Wind Speed - MPH</p>
+                        <p id="uvIndex">UV Index</p>
+                    </div>
+                </div>
+                <div class="row" id="forecast">
+                </div>
+            </div>
+        </div>
+    </div>
 
-            
-        
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/open-weather/2.0.0/openweather.min.js"
+        integrity="sha512-mlRoH3bU+q4t5clJkMwltJcka6JyNWsUJybBclHUiU0Bdux6LtcNqO8XMNi9/vp4+KCteAbc0hYnHU4Rh2SH+g=="
+        crossorigin="anonymous"></script>
+    <script src="./Pages/mainScript.js"></script>
+</body>
+
 </html>
