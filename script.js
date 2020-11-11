@@ -1,4 +1,4 @@
-var weatherAPIKey = "4761287cde43332409ca6af258893d4f";
+var weatherAPIKey = "fbfaa11458e089514df68787fbf176ac";
 var cityList = $("#cityList");
 var forecastDisplay = $("#forecast");
 var userCity = "";
@@ -6,47 +6,6 @@ var userCity = "";
 function findCity(city) {
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${weatherAPIKey}`;
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (city) {
-        queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${city.coord.lat}&lon=${city.coord.lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${weatherAPIKey}`;
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (cityFore) {
-            var iconCode = city.weather[0].icon;
-            var altIcon = city.weather[0].description;
-            var iconURL = `http://openweathermap.org/img/w/${iconCode}.png`
-            var element = $(`
-                    <h1>${city.name + moment().format(" (DD/MM/YY)")}
-                    <img src="${iconURL}" alt="${altIcon}"></h1>
-                    <p>Temperature: ${city.main.temp}</p>
-                    <p>Humidity: ${city.main.humidity} F</p>            
-                    <p>Wind Speed: ${city.wind.speed} MPH</p>`
-                );
-
-                
-            var uVI = cityFore.daily[0].uvi
-            if (uVI < 2) {
-                var uvScale = $("<span class='badge uv-Low'>");
-            }
-            else if (uVI < 5) {
-                var uvScale = $("<span class='badge uv-Mod'>");
-            }
-            else if (uVI < 7) {
-                var uvScale = $("<span class='badge badge-warning'>");
-            }
-            else if (uVI < 10) {
-                var uvScale = $("<span class='badge badge-danger'>");
-            }
-            else {
-                var uvScale = $("<span class='badge uv-Ext'>");
-            }
-            $("#mainDisplay").empty();
-            $("#mainDisplay").append(element);
-            $("#mainDisplay").append($("<p id='uvDisplay'>").text("UV Index: "));
-            $("#uvDisplay").append(uvScale.text(uVI));
 
 
             forecastDisplay.empty();
@@ -72,9 +31,6 @@ function findCity(city) {
                         `);
                 forecastDisplay.append(element);
             }
-        });
-    });
-}
 
 
 
