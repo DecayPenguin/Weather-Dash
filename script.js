@@ -1,7 +1,7 @@
-var weatherAPIKey = "fbfaa11458e089514df68787fbf176ac";
+var weatherAPIKey = "3ce39d98adfc828247e45253e75ea61b";
 var cityList = $("#cityList");
 var forecastDisplay = $("#forecast");
-var userCity = "";
+var userCity = "Austin";
 
 function findCity(city) {
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${weatherAPIKey}`;
