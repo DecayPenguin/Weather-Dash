@@ -6,6 +6,12 @@ var userCity = "Austin";
 function findCity(city) {
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${weatherAPIKey}`;
 
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${weatherAPIKey}",
+        method: "GET"
+    }).then(function(response) {
+
+    });
 
 
             forecastDisplay.empty();
