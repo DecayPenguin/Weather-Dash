@@ -7,23 +7,23 @@ function findCity(city) {
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${weatherAPIKey}`;
 
     $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${weatherAPIKey}",
+        url: queryURL,
         method: "GET"
-    }).then(function(response) {
-
+    }).then(function (response) {
+        console.log(response)
     });
 
 
-            forecastDisplay.empty();
-            var curDay = moment().format("YYYY-MM-DD") + " 12:00:00";
-            for (var i = 1; i < 6; i++) {
-                var targetDay = moment(curDay).add((i), 'd')
-                targetDay = moment(targetDay).format("YYYY-MM-DD");
-                targetDay = moment(targetDay).format("DD/MM/YYYY")
-                iconCode = cityFore.daily[i].weather[0].icon;
-                altIcon = cityFore.daily[i].weather[0].description;
-                iconURL = `http://openweathermap.org/img/w/${iconCode}.png`
-                var element = $(`
+    forecastDisplay.empty();
+    var curDay = moment().format("YYYY-MM-DD") + " 12:00:00";
+    for (var i = 1; i < 6; i++) {
+        var targetDay = moment(curDay).add((i), 'd')
+        targetDay = moment(targetDay).format("YYYY-MM-DD");
+        targetDay = moment(targetDay).format("DD/MM/YYYY")
+        iconCode = cityFore.daily[i].weather[0].icon;
+        altIcon = cityFore.daily[i].weather[0].description;
+        iconURL = `http://openweathermap.org/img/w/${iconCode}.png`
+        var element = $(`
                         <div class="col">
                             <div class="card bg-primary text-white">
                                 <div class="card-body">
@@ -35,8 +35,9 @@ function findCity(city) {
                             </div>
                         </div>                            
                         `);
-                forecastDisplay.append(element);
-            }
+        forecastDisplay.append(element);
+    }
+}
 
 
 
