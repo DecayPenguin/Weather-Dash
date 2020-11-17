@@ -2,15 +2,20 @@ var weatherAPIKey = "3ce39d98adfc828247e45253e75ea61b";
 var cityList = $("#cityList");
 var forecastDisplay = $("#forecast");
 var userCity = "Austin";
+var cityFore
 
 function findCity(city) {
-    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${weatherAPIKey}`;
+    console.log(city)
+    var searchInput = document.getElementById("searchInput")
+    console.log(userCity)
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&units=imperial&appid=${weatherAPIKey}`;
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         console.log(response)
+        cityFore = (response)
     });
 
 
@@ -20,17 +25,17 @@ function findCity(city) {
         var targetDay = moment(curDay).add((i), 'd')
         targetDay = moment(targetDay).format("YYYY-MM-DD");
         targetDay = moment(targetDay).format("DD/MM/YYYY")
-        iconCode = cityFore.daily[i].weather[0].icon;
-        altIcon = cityFore.daily[i].weather[0].description;
-        iconURL = `http://openweathermap.org/img/w/${iconCode}.png`
+        // iconCode = cityFore.daily[i].weather[0].icon;
+        // altIcon = cityFore.daily[i].weather[0].description;
+        // iconURL = `http://openweathermap.org/img/w/${iconCode}.png`
         var element = $(`
                         <div class="col">
                             <div class="card bg-primary text-white">
                                 <div class="card-body">
                                     <h5>${targetDay}</h5>
-                                    <img src="${iconURL}" alt="${altIcon}">
-                                    <p>Temp: ${cityFore.daily[i].temp.day} F</p>
-                                    <p>Humidity: ${cityFore.daily[i].humidity} %</p>
+                                    
+                                    
+                                    
                                 </div>
                             </div>
                         </div>                            
@@ -39,7 +44,9 @@ function findCity(city) {
     }
 }
 
-
+{/* <img src="${iconURL}" alt="${altIcon}"></img> */}
+{/* <p>Temp: ${cityFore.daily[i].temp.day} F</p> */}
+{/* <p>Humidity: ${cityFore.daily[i].humidity} %</p> */}
 
 function cityButton(userCity) {
     var cityBtn = `<button class="btn-block btn btn-primary">${userCity}</button>`;
@@ -50,9 +57,10 @@ function cityButton(userCity) {
 
 $(document).on("click", "button", function () {
 
+    userCity = $("#searchInput").val();
+        console.log(userCity)
     if ($(this).attr("id") == "searchButton") {
 
-        userCity = $("#searchInput").val();
         cityButton(userCity);
     }
     else {
