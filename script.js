@@ -1,4 +1,4 @@
-var weatherAPIKey = "3ce39d98adfc828247e45253e75ea61b";
+var weatherAPIKey = "53a05f277b87c434c7782ec6e511d548";
 var cityList = $("#cityList");
 var forecastDisplay = $("#forecast");
 var userCity = "Austin";
