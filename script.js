@@ -1,15 +1,14 @@
 var weatherAPIKey = "53a05f277b87c434c7782ec6e511d548";
 var cityList = $("#cityList");
 var forecastDisplay = $("#forecast");
-var userCity = "Austin";
-var cityFore
+var userCity;
+var cityFore;
+
+var cityHistory = [];
+
 
 function findCity(city) {
-    console.log(city)
-    var searchInput = document.getElementById("searchInput")
-    console.log(userCity)
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&units=imperial&appid=${weatherAPIKey}`;
-
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -18,9 +17,9 @@ function findCity(city) {
         cityFore = (response)
     });
 
-
     forecastDisplay.empty();
-    var curDay = moment().format("YYYY-MM-DD") + " 12:00:00";
+    var curDay = moment().format("YYYY-MM-DD") + "12:00:00";
+    console.log(curDay, 'CURDAY')
     for (var i = 1; i < 6; i++) {
         var targetDay = moment(curDay).add((i), 'd')
         targetDay = moment(targetDay).format("YYYY-MM-DD");
@@ -56,22 +55,25 @@ function cityButton(userCity) {
 
 
 $(document).on("click", "button", function () {
-
     userCity = $("#searchInput").val();
-        console.log(userCity)
-    if ($(this).attr("id") == "searchButton") {
+    cityHistory.push(userCity);
+    console.log(userCity)
 
-        cityButton(userCity);
-    }
-    else {
-        userCity = $(this).text();
-    }
-    $("#searchInput").val("");
-    localStorage.setItem("searchedCity", userCity);
+    $("#cityAndDay").text(userCity)
+    // if ($(this).attr("id") == "searchButton") {
+
+    //     cityButton(userCity);
+    // }
+    // else {
+    //     userCity = $(this).text();
+    // }
+    localStorage.setItem("searchedCity", cityHistory);
     findCity(userCity);
 });
 
 $(document).ready(function () {
+
+
     userCity = localStorage.getItem("searchedCity", userCity) || "";
     if (userCity != "") {
         cityButton(userCity);
