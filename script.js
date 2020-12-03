@@ -37,6 +37,8 @@ function findCity(city) {
             console.log(data)
             $("#uvIndex").text(`UV Index : ${data.value} `);
         })
+
+        
     });
 
     forecastDisplay.empty();
