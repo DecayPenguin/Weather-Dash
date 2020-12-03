@@ -15,20 +15,28 @@ function findCity(city) {
     }).then(function (response) {
         console.log(response)
         //Displays for Temperature
-        console.log(response.main.temp)
+      //  console.log(response.main.temp)
         $("#tempF").text(`Temp-F : ${response.main.temp} °`);
         //Displays for Humidity
-        console.log(response.main.humidity)
+       // console.log(response.main.humidity)
         $("#humid").text(`Humidity : ${response.main.humidity} %`);
         //Displays for Wind Speed 
-        console.log(response.wind.speed)
+      //  console.log(response.wind.speed)
         $("#wind").text(`Wind : ${response.wind.speed} MPH`);
         // UV Index
-        console.log(response.main)
+      //  console.log(response.main)
         $("#uvIndex").text(`UV Index : ${response.main} `);
 
         cityFore = (response)
 
+        var uvQuery = `http://api.openweathermap.org/data/2.5/uvi?lat=${response.coord.lat}&lon=${response.coord.lon}&appid=${weatherAPIKey}`;
+        $.ajax({
+            url: uvQuery,
+            method: "GET"
+        }).then(function(data){
+            console.log(data)
+            $("#uvIndex").text(`UV Index : ${data.value} `);
+        })
     });
 
     forecastDisplay.empty();
