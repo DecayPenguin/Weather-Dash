@@ -14,7 +14,21 @@ function findCity(city) {
         method: "GET"
     }).then(function (response) {
         console.log(response)
+        //Displays for Temperature
+        console.log(response.main.tempF)
+        $("#tempF").text(`Temp-F : ${response.temp} °`);
+        //Displays for Humidity
+        console.log(response.main.humidity)
+        $("#humid").text(`Humidity : ${response.main.humidity} %`);
+        //Displays for Wind Speed 
+        console.log(response.wind)
+        $("#wind").text(`Wind : ${response.wind} MPH`);
+        // UV Index
+        console.log(response.main)
+        $("#uvIndex").text(`UV Index : ${response.main} `);
+
         cityFore = (response)
+
     });
 
     forecastDisplay.empty();
