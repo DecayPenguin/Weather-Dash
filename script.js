@@ -21,8 +21,8 @@ function findCity(city) {
         console.log(response.main.humidity)
         $("#humid").text(`Humidity : ${response.main.humidity} %`);
         //Displays for Wind Speed 
-        console.log(response.wind)
-        $("#wind").text(`Wind : ${response.wind} MPH`);
+        console.log(response.wind.speed)
+        $("#wind").text(`Wind : ${response.wind.speed} MPH`);
         // UV Index
         console.log(response.main)
         $("#uvIndex").text(`UV Index : ${response.main} `);
