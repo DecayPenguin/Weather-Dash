@@ -15,8 +15,8 @@ function findCity(city) {
     }).then(function (response) {
         console.log(response)
         //Displays for Temperature
-        console.log(response.main.tempF)
-        $("#tempF").text(`Temp-F : ${response.temp} °`);
+        console.log(response.main.temp)
+        $("#tempF").text(`Temp-F : ${response.main.temp} °`);
         //Displays for Humidity
         console.log(response.main.humidity)
         $("#humid").text(`Humidity : ${response.main.humidity} %`);
