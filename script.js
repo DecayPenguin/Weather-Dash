@@ -41,7 +41,7 @@ function findCity(city) {
 
         cityFore = (response)
 
-        var uvQuery = `http://api.openweathermap.org/data/2.5/uvi?lat=${response.coord.lat}&lon=${response.coord.lon}&appid=${weatherAPIKey}`;
+        var uvQuery = `https://api.openweathermap.org/data/2.5/uvi?lat=${response.coord.lat}&lon=${response.coord.lon}&appid=${weatherAPIKey}`;
         $.ajax({
             url: uvQuery,
             method: "GET"
