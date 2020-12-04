@@ -15,8 +15,17 @@ function findCity(city) {
     }).then(function (response) {
         console.log(response)
         //Displays for Temperature
-      //  console.log(response.main.temp)
-        $("#tempF").text(`Temp-F : ${response.main.temp} °`);
+      var temp = response.main.temp
+      
+      console.log(typeof temp)
+
+
+     // $("#temp").text()
+
+      if(temp >= 50){
+          $("#tempF").css("color", "green")
+      }
+        $("#tempF").text(`Temp-F : ${temp} °`);
         //Displays for Humidity
        // console.log(response.main.humidity)
         $("#humid").text(`Humidity : ${response.main.humidity} %`);
@@ -34,20 +43,27 @@ function findCity(city) {
             url: uvQuery,
             method: "GET"
         }).then(function(data){
-            console.log(data)
+            console.log(data, "response")
             $("#uvIndex").text(`UV Index : ${data.value} `);
+            if(data.value >= 6){
+                $("#uvIndex").text("color", "red")
+                if(data.value <= 5 ){
+                    $("#uvIndex").text("color", "green")
+                }
+            }
         })
 
         
     });
 
     forecastDisplay.empty();
-    var curDay = moment().format("YYYY-MM-DD") + "12:00:00";
+    var curDay = moment().format("DD-MM-YYYY");
     console.log(curDay, 'CURDAY')
     for (var i = 1; i < 6; i++) {
-        var targetDay = moment(curDay).add((i), 'd')
-        targetDay = moment(targetDay).format("YYYY-MM-DD");
-        targetDay = moment(targetDay).format("DD/MM/YYYY")
+        //var targetDay = moment(curDay).add((i), 'd')
+        //targetDay = moment(targetDay).format("YYYY-MM-DD");
+        var targetDay = moment(curDay,"DD-MM-YYYY").add((i), 'days')
+        console.log(targetDay, "targetDay")
         // iconCode = cityFore.daily[i].weather[0].icon;
         // altIcon = cityFore.daily[i].weather[0].description;
         // iconURL = `http://openweathermap.org/img/w/${iconCode}.png`
