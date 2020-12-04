@@ -27,12 +27,13 @@ THEN I am presented with the city name, the date, an icon representation of weat
 WHEN I view the UV index
     The UV Index can be viewed.
 THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-    No colors are presented
+    Temp color changes, not UV Index
 WHEN I view future weather conditions for that city
     In progress
 THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
     In progress
 WHEN I click on a city in the search history
+    Is functional
 THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast

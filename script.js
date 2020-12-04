@@ -25,6 +25,9 @@ function findCity(city) {
       if(temp >= 50){
           $("#tempF").css("color", "green")
       }
+      if(temp <= 49){
+        $("#tempF").css("color", "blue")
+    }
         $("#tempF").text(`Temp-F : ${temp} °`);
         //Displays for Humidity
        // console.log(response.main.humidity)
@@ -47,9 +50,9 @@ function findCity(city) {
             $("#uvIndex").text(`UV Index : ${data.value} `);
             if(data.value >= 6){
                 $("#uvIndex").text("color", "red")
-                if(data.value <= 5 ){
-                    $("#uvIndex").text("color", "green")
-                }
+            }
+            if(data.value <= 5 ){
+                $("#uvIndex").number("color", "green")
             }
         })
 
